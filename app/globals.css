@@ -1,26 +1,36 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-dm-sans);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/*
+ * Brand palette.
+ *
+ * The Figma-to-Tailwind export mapped Zoiko's real hex values onto the
+ * *nearest* stock Tailwind colour names, which drifts — e.g. brand lime
+ * #A4C64E (muted olive) became `lime-400` #A3E635 (electric).
+ *
+ * Redefining the token here re-points every existing utility class at the
+ * brand value, so no component markup has to change.
+ *
+ * Values below are read from the Figma Inspect panel.
+ */
+@theme {
+  --color-lime-400: #a4c64e; /* brand lime */
+  --color-sky-950: #01213f; /* brand navy — dark section backgrounds */
+
+  /* Status palette — Compliance / Portfolio table badges */
+  --color-status-green: #2e9e6a;
+  --color-status-green-fg: #5db88a;
+  --color-status-red: #b91c1c;
+  --color-status-red-fg: #e57373;
+
+  /* Not yet confirmed — still stock Tailwind:
+     sky-800 (25 uses) · blue-100 (16) · slate-500 (9)
+     emerald-400 (7) · slate-50 (6) */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
 }
