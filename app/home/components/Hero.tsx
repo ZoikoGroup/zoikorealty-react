@@ -86,7 +86,9 @@ export default function Hero() {
 
           <form
             className="mx-auto mt-8 flex w-full max-w-[675px] flex-col gap-2 rounded-lg bg-white p-1.5 outline-1 -outline-offset-1 outline-lime-400/30 sm:flex-row sm:items-center"
-            action="/search"
+            // Submits to the property search page. There is no /search route —
+            // that action 404'd.
+            action="/properties"
           >
             <label htmlFor="hero-search" className="sr-only">
               Search properties

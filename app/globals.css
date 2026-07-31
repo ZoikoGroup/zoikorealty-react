@@ -19,6 +19,18 @@
 @theme {
   --color-lime-400: #a4c64e; /* brand lime */
   --color-sky-950: #01213f; /* brand navy — dark section backgrounds */
+  --color-sky-800: #034987; /* brand blue — buttons, links, accents */
+  --color-blue-100: #d0e3f2; /* brand pale blue — card borders */
+  --color-slate-50: #f4f8fc; /* brand off-white — page canvas and tile fills */
+  /* Brand teal. Read off the Deal Room button, where it is the left stop of
+     the emerald→lime gradient — stock emerald-400 (#34D399) is a far brighter
+     mint and made that gradient read as mint fading to dirty olive. */
+  --color-emerald-400: #4fb8a8;
+
+  /* Brand green — verification ticks, cleared badges, screening cells.
+     Same value as --color-status-green-fg below; stock green-400 (#4ADE80)
+     is a far brighter, yellower green. */
+  --color-green-400: #5db88a;
 
   /* Status palette — Compliance / Portfolio table badges */
   --color-status-green: #2e9e6a;
@@ -27,8 +39,7 @@
   --color-status-red-fg: #e57373;
 
   /* Not yet confirmed — still stock Tailwind:
-     sky-800 (25 uses) · blue-100 (16) · slate-500 (9)
-     emerald-400 (7) · slate-50 (6) */
+     slate-500 (9 uses) · green-600 (Financial layer icon) */
 }
 
 body {

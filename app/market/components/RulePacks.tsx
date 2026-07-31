@@ -90,12 +90,13 @@ export default function RulePacks() {
               Every market ships with auditable logic
             </h2>
           </div>
-          <a
-            href="/governance"
+          {/* No governance route yet — button, not a link to nowhere. */}
+          <button
+            type="button"
             className="rounded-md bg-white px-3.5 py-2 text-xs font-semibold tracking-tight text-sky-800 outline-1 -outline-offset-1 outline-sky-800 transition-colors hover:bg-slate-50"
           >
             See governance →
-          </a>
+          </button>
         </div>
 
         <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">

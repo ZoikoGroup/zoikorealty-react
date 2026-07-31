@@ -37,17 +37,18 @@ export default function Pams() {
             </p>
             <div className="mt-9 flex flex-wrap gap-4">
               <a
-                href="/pams"
+                href="/investors"
                 className="rounded-md bg-sky-800 px-6 py-3 text-sm font-semibold tracking-tight text-white transition-colors hover:bg-sky-900"
               >
                 Open PAMS →
               </a>
-              <a
-                href="/treasury"
+              {/* No Treasury route yet — button, not a link to nowhere. */}
+              <button
+                type="button"
                 className="rounded-md bg-white px-6 py-3 text-sm font-semibold tracking-tight text-sky-800 outline-1 -outline-offset-1 outline-sky-800 transition-colors hover:bg-slate-50"
               >
                 Treasury &amp; Ledger
-              </a>
+              </button>
             </div>
           </div>
 

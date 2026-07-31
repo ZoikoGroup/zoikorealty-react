@@ -37,7 +37,7 @@ export default function DigitalTwin() {
               independent confidence scoring.
             </p>
             <a
-              href="/property-intelligence"
+              href="/intelligence"
               className="mt-9 inline-block rounded-md bg-linear-to-r from-emerald-400 to-lime-400 px-6 py-3 text-sm font-semibold tracking-tight text-white transition-opacity hover:opacity-90"
             >
               See a Property Intelligence Page →
