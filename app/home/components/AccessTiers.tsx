@@ -7,6 +7,8 @@ type Tier = {
   blurb: string;
   features: { label: string; included: boolean }[];
   cta: string;
+  /** Only set where the destination page exists. */
+  href?: string;
   ctaStyle: "outline" | "solid" | "gradient";
   popular?: boolean;
 };
@@ -40,6 +42,7 @@ const TIERS: Tier[] = [
       { label: "Advanced portfolio tools", included: false },
     ],
     cta: "Complete Verification",
+    href: "/verify-identity",
     ctaStyle: "solid",
     popular: true,
   },
@@ -139,13 +142,24 @@ export default function AccessTiers() {
                   ))}
                 </ul>
 
+                {/* Account creation, upgrade and institutional access are not
+                    built, so those render as buttons, not links to nowhere. */}
                 <div className="mt-auto pt-8">
-                  <a
-                    href="#"
-                    className={`block rounded-md py-3 text-center text-[13px] font-medium transition-colors ${CTA_CLASSES[t.ctaStyle]}`}
-                  >
-                    {t.cta}
-                  </a>
+                  {t.href ? (
+                    <a
+                      href={t.href}
+                      className={`block rounded-md py-3 text-center text-[13px] font-medium transition-colors ${CTA_CLASSES[t.ctaStyle]}`}
+                    >
+                      {t.cta}
+                    </a>
+                  ) : (
+                    <button
+                      type="button"
+                      className={`block w-full rounded-md py-3 text-center text-[13px] font-medium transition-colors ${CTA_CLASSES[t.ctaStyle]}`}
+                    >
+                      {t.cta}
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

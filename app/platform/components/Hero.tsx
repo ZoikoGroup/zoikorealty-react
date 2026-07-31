@@ -43,13 +43,13 @@ export default function Hero() {
 
             <div className="mt-7 flex flex-wrap gap-4">
               <a
-                href="/search"
+                href="/properties"
                 className="rounded-md bg-linear-to-r from-emerald-400 to-lime-400 px-6 py-3 text-sm font-semibold tracking-tight text-white transition-opacity hover:opacity-90"
               >
                 Start a property search →
               </a>
               <a
-                href="/markets"
+                href="/market"
                 className="rounded-md bg-white/5 px-6 py-3 text-sm font-semibold tracking-tight text-white outline-1 -outline-offset-1 outline-white/20 transition-colors hover:bg-white/10"
               >
                 Explore markets

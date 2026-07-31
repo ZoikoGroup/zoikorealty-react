@@ -9,6 +9,8 @@ type Tier = {
   meta: string;
   features: string[];
   cta: string;
+  /** Only set where the destination page exists. */
+  href?: string;
   style: "outline" | "solid" | "featured";
 };
 
@@ -24,6 +26,7 @@ const TIERS: Tier[] = [
       "Saved searches (1)",
     ],
     cta: "Start exploring",
+    href: "/properties",
     style: "outline",
   },
   {
@@ -37,6 +40,7 @@ const TIERS: Tier[] = [
       "Request a viewing / offer",
     ],
     cta: "Verify & unlock",
+    href: "/verify-identity",
     style: "solid",
   },
   {
@@ -155,13 +159,24 @@ export default function Pricing() {
                   ))}
                 </ul>
 
+                {/* Professional activation and sales contact are not built,
+                    so those two render as buttons, not links to nowhere. */}
                 <div className="mt-auto pt-8">
-                  <a
-                    href="#"
-                    className={`block rounded-md py-3 text-center text-[13px] font-medium transition-colors ${CTA_CLASSES[t.style]}`}
-                  >
-                    {t.cta}
-                  </a>
+                  {t.href ? (
+                    <a
+                      href={t.href}
+                      className={`block rounded-md py-3 text-center text-[13px] font-medium transition-colors ${CTA_CLASSES[t.style]}`}
+                    >
+                      {t.cta}
+                    </a>
+                  ) : (
+                    <button
+                      type="button"
+                      className={`block w-full rounded-md py-3 text-center text-[13px] font-medium transition-colors ${CTA_CLASSES[t.style]}`}
+                    >
+                      {t.cta}
+                    </button>
+                  )}
                 </div>
               </div>
             );

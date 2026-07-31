@@ -7,6 +7,8 @@ type Engine = {
   title: string;
   body: string;
   link: string;
+  /** Only set where the destination page exists. */
+  href?: string;
   tile: string;
   /** Supplied PNG; icons for dark tiles are white, for light tiles dark blue. */
   icon?: string;
@@ -20,6 +22,7 @@ const ENGINES: Engine[] = [
     title: "Search & Discover",
     body: "Natural-language intent, constraint extraction, candidate retrieval, explainable ranking — with confidence scores on every match.",
     link: "Open Discovery →",
+    href: "/properties",
     tile: "bg-slate-50",
     icon: "/platform/icon-search.png",
   },
@@ -27,6 +30,7 @@ const ENGINES: Engine[] = [
     title: "Property Intelligence",
     body: "Every asset has a digital twin: legal, financial, physical, market, and predictive layers — each with confidence, provenance, and lineage.",
     link: "Open PIP →",
+    href: "/intelligence",
     tile: "bg-sky-800",
     icon: "/platform/icon-property-intelligence.png",
   },
@@ -41,6 +45,7 @@ const ENGINES: Engine[] = [
     title: "Portfolio & Asset Mgmt",
     body: "Institutional PAMS: asset register, valuation center, scenario lab, covenant monitoring, investor reporting, and distribution rails.",
     link: "Open PAMS →",
+    href: "/investors",
     tile: "bg-lime-400",
     icon: "/platform/icon-portfolio.png",
     iconSize: 15,
@@ -104,13 +109,24 @@ export default function PlatformPillars() {
               </span>
               <h3 className="mt-6 text-lg font-bold text-sky-950">{e.title}</h3>
               <p className="mt-4 text-xs leading-6 text-slate-500">{e.body}</p>
+              {/* Deal Room, Treasury and Governance have no page yet, so those
+                  three render as buttons rather than links to nowhere. */}
               <div className="mt-auto pt-8">
-                <a
-                  href="#"
-                  className="text-xs font-semibold text-sky-800 hover:underline"
-                >
-                  {e.link}
-                </a>
+                {e.href ? (
+                  <a
+                    href={e.href}
+                    className="text-xs font-semibold text-sky-800 hover:underline"
+                  >
+                    {e.link}
+                  </a>
+                ) : (
+                  <button
+                    type="button"
+                    className="text-xs font-semibold text-sky-800 hover:underline"
+                  >
+                    {e.link}
+                  </button>
+                )}
               </div>
             </div>
           ))}

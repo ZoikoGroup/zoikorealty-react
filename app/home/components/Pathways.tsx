@@ -2,7 +2,17 @@ import Image from "next/image";
 import Container from "./Container";
 import SectionHeading from "./SectionHeading";
 
-const PATHWAYS = [
+type Pathway = {
+  icon: string;
+  title: string;
+  body: string;
+  points: string[];
+  cta: string;
+  /** Only set where the destination page exists. */
+  href?: string;
+};
+
+const PATHWAYS: Pathway[] = [
   {
     icon: "/home/icon-home.png",
     title: "Buyers & Global Families",
@@ -13,6 +23,7 @@ const PATHWAYS = [
       "Verified legal and financial intelligence",
     ],
     cta: "Start Buying Journey",
+    href: "/properties",
   },
   {
     icon: "/home/layer-market.png",
@@ -24,6 +35,7 @@ const PATHWAYS = [
       "Liquidity and exit diagnostics",
     ],
     cta: "Explore Investment Tools",
+    href: "/investors",
   },
   {
     icon: "/home/layer-physical.png",
@@ -94,13 +106,24 @@ export default function Pathways() {
                 ))}
               </ul>
 
+              {/* Developer and institutional-access flows are not built, so
+                  those two render as buttons rather than links to nowhere. */}
               <div className="mt-auto pt-8">
-                <a
-                  href="#"
-                  className="block rounded-md py-3 text-center text-[13px] font-medium text-sky-800 outline-1 -outline-offset-1 outline-sky-800/40 transition-colors hover:bg-slate-50"
-                >
-                  {p.cta}
-                </a>
+                {p.href ? (
+                  <a
+                    href={p.href}
+                    className="block rounded-md py-3 text-center text-[13px] font-medium text-sky-800 outline-1 -outline-offset-1 outline-sky-800/40 transition-colors hover:bg-slate-50"
+                  >
+                    {p.cta}
+                  </a>
+                ) : (
+                  <button
+                    type="button"
+                    className="block w-full rounded-md py-3 text-center text-[13px] font-medium text-sky-800 outline-1 -outline-offset-1 outline-sky-800/40 transition-colors hover:bg-slate-50"
+                  >
+                    {p.cta}
+                  </button>
+                )}
               </div>
             </div>
           ))}

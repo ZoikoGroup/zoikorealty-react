@@ -74,7 +74,7 @@ export default function MarketsEngine() {
             </dl>
 
             <a
-              href="/markets"
+              href="/market"
               className="mt-8 inline-block rounded-md bg-sky-800 px-6 py-3 text-sm font-semibold tracking-tight text-white transition-colors hover:bg-sky-900"
             >
               Explore Markets Engine →

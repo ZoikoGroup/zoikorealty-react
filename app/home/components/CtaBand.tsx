@@ -25,7 +25,7 @@ export default function CtaBand() {
 
         <div className="mt-8 flex flex-wrap justify-center gap-5">
           <a
-            href="/market-intelligence"
+            href="/market"
             className="rounded-md bg-linear-to-r from-emerald-400 to-lime-400 px-10 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
           >
             Start with Market Intelligence

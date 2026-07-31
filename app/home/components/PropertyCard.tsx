@@ -70,12 +70,13 @@ export default function PropertyCard({ property }: { property: Property }) {
           <span className="text-lg font-bold leading-7 text-sky-950">
             {property.price}
           </span>
-          <a
-            href={`/properties/${property.id}`}
+          {/* No per-property detail route yet (app/properties/[id]). */}
+          <button
+            type="button"
             className="text-sm font-semibold capitalize leading-4 tracking-wide text-slate-500 underline hover:text-sky-800"
           >
             View Details
-          </a>
+          </button>
         </div>
       </div>
     </article>

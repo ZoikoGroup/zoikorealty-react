@@ -1,24 +1,25 @@
 import Image from "next/image";
 import Link from "next/link";
 
-/** Drop the wordmark at public/zoiko-logo.png (136 x 41). */
-const LOGO_SRC = "/zoiko-logo.png";
+/** Wordmark, 136 x 41. */
+const LOGO_SRC = "/logo.png";
 
-type Item = { label: string; href: string };
+type Item = { label: string; href?: string };
 
 /**
- * Only `/`, `/platform` and `/market` exist so far. Links whose destination
- * has not been built yet stay on "#" rather than pointing at a 404.
+ * Built routes: /, /platform, /market, /properties, /investors, /intelligence,
+ * /verify-identity. Entries without an href render as plain text — nothing
+ * points at a page that does not exist, or at an unrelated one.
  */
 const COLUMNS: { title: string; links: Item[] }[] = [
   {
     title: "Platform",
     links: [
-      { label: "Intelligence Engine", href: "/platform" },
-      { label: "Property Discovery", href: "/platform" },
-      { label: "Transaction Engine", href: "/platform" },
-      { label: "Portfolio Layer", href: "/platform" },
-      { label: "API Access", href: "/platform" },
+      { label: "Intelligence Engine", href: "/intelligence" },
+      { label: "Property Discovery", href: "/properties" },
+      { label: "Transaction Engine" },
+      { label: "Portfolio Layer", href: "/investors" },
+      { label: "API Access" },
     ],
   },
   {
@@ -34,31 +35,31 @@ const COLUMNS: { title: string; links: Item[] }[] = [
   {
     title: "Investors",
     links: [
-      { label: "Portfolio Intelligence", href: "#" },
-      { label: "Yield Screening", href: "#" },
-      { label: "Risk Profiling", href: "#" },
-      { label: "Liquidity & Exit", href: "#" },
-      { label: "Deal Workflows", href: "#" },
+      { label: "Portfolio Intelligence", href: "/investors" },
+      { label: "Yield Screening" },
+      { label: "Risk Profiling" },
+      { label: "Liquidity & Exit" },
+      { label: "Deal Workflows" },
     ],
   },
   {
     title: "Legal",
     links: [
-      { label: "Compliance Architecture", href: "#" },
-      { label: "Jurisdiction Rules", href: "#" },
-      { label: "Privacy Policy", href: "#" },
-      { label: "Terms of Use", href: "#" },
-      { label: "AML/KYC Policy", href: "#" },
+      { label: "Compliance Architecture" },
+      { label: "Jurisdiction Rules" },
+      { label: "Privacy Policy" },
+      { label: "Terms of Use" },
+      { label: "AML/KYC Policy" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "About Zoiko Realty", href: "#" },
-      { label: "Zoiko Group", href: "#" },
-      { label: "Press", href: "#" },
-      { label: "Careers", href: "#" },
-      { label: "Contact", href: "#" },
+      { label: "About Zoiko Realty" },
+      { label: "Zoiko Group" },
+      { label: "Press" },
+      { label: "Careers" },
+      { label: "Contact" },
     ],
   },
 ];
@@ -94,13 +95,17 @@ export default function Footer() {
               </h2>
               <ul className="mt-[18px] space-y-2.5">
                 {col.links.map((l) => (
-                  <li key={l.label}>
-                    <Link
-                      href={l.href}
-                      className="text-xs leading-5 text-white transition-colors hover:text-lime-400"
-                    >
-                      {l.label}
-                    </Link>
+                  <li key={l.label} className="text-xs leading-5 text-white">
+                    {l.href ? (
+                      <Link
+                        href={l.href}
+                        className="transition-colors hover:text-lime-400"
+                      >
+                        {l.label}
+                      </Link>
+                    ) : (
+                      l.label
+                    )}
                   </li>
                 ))}
               </ul>
@@ -116,13 +121,8 @@ export default function Footer() {
           </p>
           <ul className="flex flex-wrap items-center gap-x-6">
             {UTILITY.map((u) => (
-              <li key={u}>
-                <a
-                  href="#"
-                  className="text-xs leading-4 text-white/60 transition-colors hover:text-white"
-                >
-                  {u}
-                </a>
+              <li key={u} className="text-xs leading-4 text-white/60">
+                {u}
               </li>
             ))}
           </ul>
